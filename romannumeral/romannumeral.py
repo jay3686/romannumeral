@@ -1,6 +1,45 @@
 # -*- coding: utf-8 -*-
 
 
+ROMANS = (('M',  1000),
+          ('CM', 900),
+          ('D',  500),
+          ('CD', 400),
+          ('C',  100),
+          ('XC', 90),
+          ('L',  50),
+          ('XL', 40),
+          ('X',  10),
+          ('IX', 9),
+          ('V',  5),
+          ('IV', 4),
+          ('I',  1))
+
+def parse_roman_numeral_from_string(s):
+
+    roman_string = str(s)
+    n = 0
+
+    for letter, value in ROMANS:
+        while letter == roman_string[:len(letter)]:
+            n += value
+            roman_string = roman_string[len(letter):]
+    return n
+
+def parse_roman_numeral_from_int(n):
+
+    roman_int = int(n)
+    s = ''
+
+    for letter, value in ROMANS:
+        while roman_int >= value:
+            s += letter
+            roman_int -= value
+        if roman_int == 0:
+            break
+    return s
+
+
 class RomanNumeral(object):
     """ Represents an a Roman Numeral
 
@@ -8,17 +47,25 @@ class RomanNumeral(object):
 
     def __init__(self, value):
         if isinstance(value, str) or isinstance(value, unicode):
-            self.value = self.__parse_roman_numeral_from_string(value)
+            self.value = parse_roman_numeral_from_string(value)
+            self.string = value
         if isinstance(value, int):
             self.value = value
+            self.string = parse_roman_numeral_from_int(value)
 
     def __repr__(self):
         return 'RomanNumeral({})'.format(self.value)
 
 
-    def __cmp__(a, b):
-        cmpnum = cmp(a.value, b.value)
-        return cmpnum
+    def __str__(self):
+        return self.string
+
+    def __int__(self):
+        return self.value
+
+
+    def __cmp__(self, b):
+        return cmp(self.value, int(value))
 
     def __add__(self, other):
         return self.__class__(self.value + int(other))
@@ -44,9 +91,6 @@ class RomanNumeral(object):
     def __pow__(self, other, modulo=None):
         return self.__class__(self.value ** int(other))
 
-
-
-
     @classmethod
     def from_int(cls, roman_as_int):
         """ Create a RomanNumeral object from an int
@@ -63,7 +107,3 @@ class RomanNumeral(object):
 
         cls(roman_as_string)
 
-
-    def __parse_roman_numeral_from_string(value):
-
-        return 10
