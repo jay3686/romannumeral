@@ -12,7 +12,7 @@ romannumeral
         :target: https://pypi.python.org/pypi/romannumeral
 
 
-'This package has a class for working with Roman Numerals.'
+This package is a class for working with Roman Numerals.
 
 * Free software: BSD license
 * Documentation: https://romannumeral.readthedocs.org.
@@ -20,4 +20,6 @@ romannumeral
 Features
 --------
 
-* TODO
+* Supports basic mathematic operations
+* Can cast to string or int
+* Can parse from string or int
