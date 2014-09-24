@@ -20,4 +20,6 @@ romannumeral
 Features
 --------
 
-* TODO
+* Supports basic mathematic operations
+* Can cast to string or int
+* Can parse from string or int
