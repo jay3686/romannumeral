@@ -23,3 +23,11 @@ Features
 * Supports basic mathematic operations
 * Can cast to string or int
 * Can parse from string or int
+
+
+TODO
+--------
+
+* Add Exceptions
+* Add Unit Tests
+* Add Documentation
