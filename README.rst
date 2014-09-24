@@ -12,7 +12,7 @@ romannumeral
         :target: https://pypi.python.org/pypi/romannumeral
 
 
-'This package has a class for working with Roman Numerals.'
+This package is a class for working with Roman Numerals.
 
 * Free software: BSD license
 * Documentation: https://romannumeral.readthedocs.org.
