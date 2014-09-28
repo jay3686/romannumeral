@@ -6,3 +6,7 @@ __version__ = '0.1.1'
 
 
 from .romannumeral import RomanNumeral
+
+from .error import RomanError
+from .error import ParseError
+from .error import OutOfRangeError

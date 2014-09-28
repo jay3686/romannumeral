@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from .error import ParseError
+from .error import OutOfRangeError
 
 ROMANS = (('M',  1000),
           ('CM', 900),
@@ -49,9 +51,14 @@ class RomanNumeral(object):
         if isinstance(value, str) or isinstance(value, unicode):
             self.value = parse_roman_numeral_from_string(value)
             self.string = value
-        if isinstance(value, int):
+        elif isinstance(value, int):
+            # roman numberals do not support 0 or values over 3999
+            if not 0 < value < 4000:
+                raise OutOfRangeError
             self.value = value
             self.string = parse_roman_numeral_from_int(value)
+        else:
+            raise ParseError
 
     def __repr__(self):
         return 'RomanNumeral({})'.format(self.value)
