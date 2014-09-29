@@ -109,6 +109,9 @@ class RomanNumeral(object):
     def __div__(self, other):
         return self.__floordiv__(other)
 
+    def __truediv__(self, other):
+        return self.__floordiv__(other)
+
     def __pow__(self, other, modulo=None):
         return self.__class__(self.value ** int(other))
 

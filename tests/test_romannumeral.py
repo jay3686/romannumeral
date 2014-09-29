@@ -27,14 +27,14 @@ class TestRomannumeral(unittest.TestCase):
     def test_create_roman_from_int(self):
         r = RomanNumeral(10)
 
-        assert r.value == 10
-        assert r.string == 'X'
+        self.assertEqual(r.value, 10)
+        self.assertEqual(r.string, 'X')
 
     def test_create_roman_from_str(self):
         r = RomanNumeral('X')
 
-        assert r.value == 10
-        assert r.string == 'X'
+        self.assertEqual(r.value, 10)
+        self.assertEqual(r.string, 'X')
 
     def test_create_roman_exhaustive(self):
 
@@ -43,7 +43,7 @@ class TestRomannumeral(unittest.TestCase):
                 self.assertRaises(OutOfRangeError, RomanNumeral, n)
             else:
                 r = RomanNumeral(n)
-                assert r.value == n
+                self.assertEqual(r.value, n)
 
     def test_roman_from_badstring(self):
         """ Roman from malformed string should through parse exception """
@@ -78,7 +78,7 @@ class TestRomannumeral(unittest.TestCase):
         for y in range(1, 4000):
             if 0 < x + y < 4000:
                 roman_math = RomanNumeral(x) + RomanNumeral(y)
-                assert roman_math == RomanNumeral(x + y)
+                self.assertEqual(roman_math, RomanNumeral(x + y))
             else:
                 self.assertRaises(OutOfRangeError, RomanNumeral, x + y)
 
@@ -89,7 +89,7 @@ class TestRomannumeral(unittest.TestCase):
 
             if 0 < x - y < 4000:
                 roman_math = RomanNumeral(x) - RomanNumeral(y)
-                assert roman_math == RomanNumeral(x - y)
+                self.assertEqual(roman_math, RomanNumeral(x - y))
             else:
                 self.assertRaises(OutOfRangeError, RomanNumeral, x - y)
 
@@ -100,7 +100,7 @@ class TestRomannumeral(unittest.TestCase):
 
             if 0 < x * y < 4000:
                 roman_math = RomanNumeral(x) * RomanNumeral(y)
-                assert roman_math == RomanNumeral(x * y)
+                self.assertEqual(roman_math, RomanNumeral(x * y))
             else:
                 self.assertRaises(OutOfRangeError, RomanNumeral, x * y)
 
@@ -111,7 +111,7 @@ class TestRomannumeral(unittest.TestCase):
 
             if 0 < x / y < 4000:
                 roman_math = RomanNumeral(x) / RomanNumeral(y)
-                assert roman_math == RomanNumeral(x / y)
+                self.assertEqual(roman_math, RomanNumeral(x / y))
             else:
                 self.assertRaises(OutOfRangeError, RomanNumeral, x / y)
 
@@ -122,7 +122,7 @@ class TestRomannumeral(unittest.TestCase):
 
             if 0 < x ** y < 4000:
                 roman_math = RomanNumeral(x) ** RomanNumeral(y)
-                assert roman_math == RomanNumeral(x ** y)
+                self.assertEqual(roman_math, RomanNumeral(x ** y))
             else:
                 self.assertRaises(OutOfRangeError, RomanNumeral, x ** y)
 
