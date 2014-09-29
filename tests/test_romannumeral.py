@@ -111,9 +111,9 @@ class TestRomannumeral(unittest.TestCase):
 
             if 0 < x / y < 4000:
                 roman_math = RomanNumeral(x) / RomanNumeral(y)
-                self.assertEqual(roman_math, RomanNumeral(x / y))
+                self.assertEqual(roman_math, RomanNumeral(x // y))
             else:
-                self.assertRaises(OutOfRangeError, RomanNumeral, x / y)
+                self.assertRaises(OutOfRangeError, RomanNumeral, x // y)
 
     def test_roman_exponent(self):
 

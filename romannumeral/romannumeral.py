@@ -85,8 +85,14 @@ class RomanNumeral(object):
         return self.value
 
 
-    def __cmp__(self, value):
-        return cmp(self.value, int(value))
+    def __lt__(self, value):
+        return self.value < int(value)
+
+    def __gt__(self, value):
+        return self.value > int(value)
+
+    def __eq__(self, value):
+        return self.value == int(value)
 
     def __add__(self, other):
         return self.__class__(self.value + int(other))
@@ -98,7 +104,7 @@ class RomanNumeral(object):
         return self.__class__(self.value * int(other))
 
     def __floordiv__(self, other):
-        return self.__class__(self.value / int(other))
+        return self.__class__(self.value // int(other))
 
     def __mod__(self, other):
         return self.__class__(self.value % int(other))
