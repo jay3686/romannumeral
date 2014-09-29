@@ -48,7 +48,7 @@ class RomanNumeral(object):
     """
 
     def __init__(self, value):
-        if isinstance(value, str) or isinstance(value, unicode):
+        if isinstance(value, str):
             self.value = parse_roman_numeral_from_string(value)
             self.string = value
         elif isinstance(value, int):

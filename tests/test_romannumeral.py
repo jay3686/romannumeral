@@ -38,7 +38,7 @@ class TestRomannumeral(unittest.TestCase):
 
     def test_create_roman_exhaustive(self):
 
-        for n in xrange(10000):
+        for n in range(10000):
             if n == 0 or n >= 4000:
                 self.assertRaises(OutOfRangeError, RomanNumeral, n)
             else:
