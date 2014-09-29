@@ -68,10 +68,63 @@ class TestRomannumeral(unittest.TestCase):
         """ Roman below 0 throw an overflow exception """
         self.assertRaises(OutOfRangeError, RomanNumeral, -1)
 
-
     def test_roman_from_over_3999(self):
         """ Roman over 3999 throw an overflow exception """
         self.assertRaises(OutOfRangeError, RomanNumeral, 9001)
+
+    def test_roman_addition(self):
+
+        x = 2000
+        for y in range(1, 4000):
+            if 0 < x + y < 4000:
+                roman_math = RomanNumeral(x) + RomanNumeral(y)
+                assert roman_math == RomanNumeral(x + y)
+            else:
+                self.assertRaises(OutOfRangeError, RomanNumeral, x + y)
+
+    def test_roman_subtraction(self):
+
+        x = 2000
+        for y in range(1, 4000):
+
+            if 0 < x - y < 4000:
+                roman_math = RomanNumeral(x) - RomanNumeral(y)
+                assert roman_math == RomanNumeral(x - y)
+            else:
+                self.assertRaises(OutOfRangeError, RomanNumeral, x - y)
+
+    def test_roman_multiplication(self):
+
+        x = 10
+        for y in range(1, 4000):
+
+            if 0 < x * y < 4000:
+                roman_math = RomanNumeral(x) * RomanNumeral(y)
+                assert roman_math == RomanNumeral(x * y)
+            else:
+                self.assertRaises(OutOfRangeError, RomanNumeral, x * y)
+
+    def test_roman_division(self):
+
+        x = 3999
+        for y in range(1, 4000):
+
+            if 0 < x / y < 4000:
+                roman_math = RomanNumeral(x) / RomanNumeral(y)
+                assert roman_math == RomanNumeral(x / y)
+            else:
+                self.assertRaises(OutOfRangeError, RomanNumeral, x / y)
+
+    def test_roman_exponent(self):
+
+        x = 2
+        for y in range(1, 60):
+
+            if 0 < x ** y < 4000:
+                roman_math = RomanNumeral(x) ** RomanNumeral(y)
+                assert roman_math == RomanNumeral(x ** y)
+            else:
+                self.assertRaises(OutOfRangeError, RomanNumeral, x ** y)
 
 
 if __name__ == '__main__':

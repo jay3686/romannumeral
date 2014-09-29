@@ -85,7 +85,7 @@ class RomanNumeral(object):
         return self.value
 
 
-    def __cmp__(self, b):
+    def __cmp__(self, value):
         return cmp(self.value, int(value))
 
     def __add__(self, other):

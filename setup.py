@@ -21,7 +21,7 @@ test_requirements = [
 
 setup(
     name='romannumeral',
-    version='0.1.1',
+    version='0.2.1',
     description='This package has a class for working with Roman Numerals.',
     long_description=readme + '\n\n' + history,
     author='Jay Patel',
