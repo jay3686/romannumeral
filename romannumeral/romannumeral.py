@@ -2,6 +2,8 @@
 
 from .error import ParseError
 from .error import OutOfRangeError
+import re
+
 
 ROMANS = (('M',  1000),
           ('CM', 900),
@@ -42,6 +44,16 @@ def parse_roman_numeral_from_int(n):
     return s
 
 
+def validate_roman_string(s):
+    """ Checks is a string matchs the proper syntax for a roman numeral
+
+        Returs True if valid roman string else False
+
+    """
+
+    roman_pattern = '^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$'
+    return bool(re.match(roman_pattern, s)) and s.strip() != ''
+
 class RomanNumeral(object):
     """ Represents an a Roman Numeral
 
@@ -49,6 +61,8 @@ class RomanNumeral(object):
 
     def __init__(self, value):
         if isinstance(value, str):
+            if not validate_roman_string(value):
+                raise ParseError
             self.value = parse_roman_numeral_from_string(value)
             self.string = value
         elif isinstance(value, int):

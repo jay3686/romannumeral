@@ -47,7 +47,18 @@ class TestRomannumeral(unittest.TestCase):
 
     def test_roman_from_badstring(self):
         """ Roman from malformed string should through parse exception """
-        pass
+
+        # no random sstring to roman
+        self.assertRaises(ParseError, RomanNumeral, 'dfadsfafaf')
+
+        # no string representation of number
+        self.assertRaises(ParseError, RomanNumeral, '101')
+
+        # no lower case
+        self.assertRaises(ParseError, RomanNumeral, 'xviii')
+
+        # no spaces
+        self.assertRaises(ParseError, RomanNumeral, 'X V I I I')
 
     def test_roman_from_decimal(self):
         """ Roman from malformed string should through parse exception """
